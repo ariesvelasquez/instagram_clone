@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "629265217898",
+    "project_id": "instagram-clone-project-aries",
+    "storage_bucket": "instagram-clone-project-aries.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629265217898:android:f2c492a7848b2e72b08d13",
+        "android_client_info": {
+          "package_name": "com.ariesvelasquez.instagram_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629265217898-lhc53e6np7hchgbitt20l07uq6p6g45r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt7J9DwCtLzCAMoRf2vfHw5Bw1e18WHSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629265217898-lhc53e6np7hchgbitt20l07uq6p6g45r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
