@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="facebook_app_id">5886941144719932</string>
+    <string name="fb_login_protocol_scheme">fb5886941144719932</string>
+    <string name="facebook_client_token">a67a49ba2e1253af5a1b8b2796373d6d</string>
+    <string name="app_name">Image Sharing Course</string>
+</resources>
