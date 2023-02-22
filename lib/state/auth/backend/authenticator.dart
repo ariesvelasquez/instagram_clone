@@ -8,6 +8,8 @@ import '../../posts/typedef/user_id.dart';
 import '../models/auth_result.dart';
 
 class Authenticator {
+  const Authenticator();
+
   User? get currentUser => FirebaseAuth.instance.currentUser;
 
   UserId? get userId => currentUser?.uid;

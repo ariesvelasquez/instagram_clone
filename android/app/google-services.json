@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "629265217898-lhc53e6np7hchgbitt20l07uq6p6g45r.apps.googleusercontent.com",
+          "client_id": "629265217898-1qpud5kcf63s6dq5ho6et7hfhnmn00e8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ariesvelasquez.instagram_clone",
+            "certificate_hash": "3199abcd36483a479d1bd050b3a5bd76a8d44218"
+          }
+        },
+        {
+          "client_id": "629265217898-ag6et4m1nquu01dvogls1gnq6gnr3r87.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,8 +35,15 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "629265217898-lhc53e6np7hchgbitt20l07uq6p6g45r.apps.googleusercontent.com",
+              "client_id": "629265217898-ag6et4m1nquu01dvogls1gnq6gnr3r87.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "629265217898-fme12ca1t7p0206g76fvbq7c3gigas0v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ariesvelasquez.instagramClone"
+              }
             }
           ]
         }
