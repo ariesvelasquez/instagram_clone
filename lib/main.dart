@@ -7,6 +7,9 @@ import 'dart:developer' as devtools show log;
 
 import 'package:instagram_clone/state/auth/providers/auth_state_provider.dart';
 import 'package:instagram_clone/state/auth/providers/is_logged_in_provider.dart';
+import 'package:instagram_clone/state/providers/is_loading_provider.dart';
+import 'package:instagram_clone/views/components/loading/loading_screen.dart';
+import 'package:instagram_clone/views/login/login_view.dart';
 
 extension Log on Object {
   void log() => devtools.log(toString());
@@ -38,9 +41,17 @@ class App extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
       ),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       home: Consumer(
         builder: (context, ref, child) {
+          ref.listen<bool>(isLoadingProvider, (_, isLoading) {
+            if (isLoading) {
+              LoadingScreen.instance().show(context: context);
+            } else {
+              LoadingScreen.instance().hide();
+            }
+          });
+
           final isLoggedIn = ref.watch(isLoggedInProvider);
           if (isLoggedIn) {
             return const MainView();
@@ -62,6 +73,10 @@ class MainView extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Main View'),
         ),
+        body: Column(
+          children: [
+          ],
+        ),
         floatingActionButton: Consumer(
           builder: (context, ref, child) {
             return FloatingActionButton(
@@ -70,30 +85,5 @@ class MainView extends StatelessWidget {
             );
           },
         ));
-  }
-}
-
-class LoginView extends ConsumerWidget {
-  const LoginView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login View'),
-      ),
-      body: Column(
-        children: [
-          TextButton(
-            onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
-            child: const Text('Sign In with Google'),
-          ),
-          TextButton(
-            onPressed: ref.read(authStateProvider.notifier).loginWithFacebook,
-            child: const Text('Sign In with FaceBook'),
-          ),
-        ],
-      ),
-    );
   }
 }

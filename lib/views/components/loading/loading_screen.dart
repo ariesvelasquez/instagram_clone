@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/view/components/constants/strings.dart';
-import 'package:instagram_clone/view/components/loading/loading_screen_controller.dart';
+import 'package:instagram_clone/views/components/constants/strings.dart';
+import 'package:instagram_clone/views/components/loading/loading_screen_controller.dart';
 
 class LoadingScreen {
   LoadingScreen._sharedInstance();
@@ -20,7 +20,7 @@ class LoadingScreen {
     if (_controller?.update(text) ?? false) {
       return;
     } else {
-      _controller = showOverLay(
+      _controller = _showOverLay(
         context: context,
         text: text,
       );
@@ -32,7 +32,7 @@ class LoadingScreen {
     _controller = null;
   }
 
-  LoadingScreenController? showOverLay({
+  LoadingScreenController? _showOverLay({
     required BuildContext context,
     String text = Strings.loading,
   }) {
@@ -59,19 +59,18 @@ class LoadingScreen {
                 minWidth: size.width * 0.5,
               ),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.secondaryContainer,
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(vertical: 16.00, horizontal: 8.00),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 10.0),
                       const CircularProgressIndicator(),
-                      const SizedBox(height: 10.0),
+                      const SizedBox(height: 18.0),
                       StreamBuilder(
                         stream: textController.stream,
                         builder: (
@@ -85,7 +84,7 @@ class LoadingScreen {
                                   .textTheme
                                   .bodyMedium
                                   ?.copyWith(
-                                    color: Colors.black,
+                                    color: Theme.of(context).colorScheme.onSecondaryContainer,
                                   ),
                             );
                           } else {
