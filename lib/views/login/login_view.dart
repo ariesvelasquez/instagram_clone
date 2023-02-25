@@ -15,7 +15,6 @@ class LoginView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(

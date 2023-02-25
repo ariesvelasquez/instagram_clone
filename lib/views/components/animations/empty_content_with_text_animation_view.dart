@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/views/components/animations/empty_content_animation_view.dart';
 
 class EmptyContentWithTextAnimationView extends StatelessWidget {
   final String text;
@@ -22,9 +23,7 @@ class EmptyContentWithTextAnimationView extends StatelessWidget {
                   ),
             ),
           ),
-          EmptyContentWithTextAnimationView(
-            text: text,
-          )
+          const EmptyContentAnimationView(),
         ],
       ),
     );
