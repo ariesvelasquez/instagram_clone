@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instagram_clone/state/auth/providers/auth_state_provider.dart';
+import 'package:instagram_clone/state/image_upload/helpers/image_picker_helper.dart';
+import 'package:instagram_clone/state/image_upload/models/file_type.dart';
 import 'package:instagram_clone/state/main/settings/theme/theme_mode/icon/theme_mode_icon.dart';
 import 'package:instagram_clone/state/main/settings/theme/theme_mode/theme_mode_state_provider.dart';
+import 'package:instagram_clone/state/post_settings/providers/post_settings_provider.dart';
 import 'package:instagram_clone/views/components/dialogs/alert_dialog_model.dart';
 import 'package:instagram_clone/views/components/dialogs/logout_dialog.dart';
 import 'package:instagram_clone/views/constants/strings.dart';
+import 'package:instagram_clone/views/create_new_post/create_new_post_view.dart';
 import 'package:instagram_clone/views/tabs/user_posts/user_posts_view.dart';
 
 class MainView extends ConsumerStatefulWidget {
@@ -31,17 +35,50 @@ class _MainViewState extends ConsumerState<MainView> {
           actions: [
             IconButton(
               onPressed: () async {
-                await ref.read(themeModeStateProvider.notifier).toggleThemeMode();
+                await ref
+                    .read(themeModeStateProvider.notifier)
+                    .toggleThemeMode();
               },
               icon: Icon(ref.watch(themeModeIconProvider)),
             ),
             IconButton(
               onPressed: () async {
+                // Pick video
+                final videoFile =
+                    await ImagePickerHelper.pickVideoFromGallery();
+                if (videoFile == null || !mounted) return;
+
+                ref.refresh(postSettingsProvider);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => CreateNewPostView(
+                      fileToPost: videoFile,
+                      fileType: FileTypeEnum.video,
+                    ),
+                  ),
+                );
               },
               icon: const FaIcon(FontAwesomeIcons.film),
             ),
             IconButton(
-              onPressed: () async {},
+              onPressed: () async {
+                // Pick Image
+                final imageFile =
+                await ImagePickerHelper.pickImageFromGallery();
+                if (imageFile == null || !mounted) return;
+
+                ref.refresh(postSettingsProvider);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => CreateNewPostView(
+                      fileToPost: imageFile,
+                      fileType: FileTypeEnum.image,
+                    ),
+                  ),
+                );
+              },
               icon: const Icon(Icons.add_photo_alternate_outlined),
             ),
             IconButton(

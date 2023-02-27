@@ -10,6 +10,12 @@ import 'package:instagram_clone/views/components/loading/loading_screen.dart';
 import 'package:instagram_clone/views/login/login_view.dart';
 import 'package:instagram_clone/views/main/main_view.dart';
 
+import 'dart:developer' as devtools show log;
+
+extension Log on Object {
+  void log() => devtools.log(toString());
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -33,7 +39,7 @@ class App extends ConsumerWidget {
     final themeMode = ref.watch(themeModeStateProvider);
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Instant-gram',
       darkTheme: ThemeData.dark(
         useMaterial3: true,
       ),
