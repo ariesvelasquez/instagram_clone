@@ -15,7 +15,7 @@ class ThumbnailRequest {
 
   @override
   bool operator ==(covariant ThumbnailRequest other) =>
-      identical(this, other) ||
+      identical(this, other) &&
       runtimeType == other.runtimeType &&
           fileType == other.fileType &&
           file == other.file;

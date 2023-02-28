@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/views/components/post/post_thumbnail_view.dart';
+import 'package:instagram_clone/views/post_comments/post_comments_view.dart';
 
 import '../../../state/posts/models/post.dart';
 
@@ -26,7 +27,15 @@ class PostsGridView extends StatelessWidget {
         return PostThumbnailView(
           post: post,
           onTapped: () {
-            // Todo: Navigate to Post details screen
+            // Todo: Delete this lateer
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => PostCommentsView(
+                  postId: post.postId,
+                ),
+              ),
+            );
           },
         );
       },
