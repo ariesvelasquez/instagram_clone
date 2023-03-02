@@ -6,6 +6,7 @@ import 'package:instagram_clone/views/components/animations/data_not_found_anima
 import 'package:instagram_clone/views/components/animations/empty_content_with_text_animation_view.dart';
 import 'package:instagram_clone/views/components/animations/error_animation_view.dart';
 import 'package:instagram_clone/views/components/post/posts_grid_view.dart';
+import 'package:instagram_clone/views/components/post/posts_sliver_grid_view.dart';
 import 'package:instagram_clone/views/constants/strings.dart';
 
 class SearchGridView extends ConsumerWidget {
@@ -22,8 +23,10 @@ class SearchGridView extends ConsumerWidget {
     WidgetRef ref,
   ) {
     if (searchTerm.isEmpty) {
-      return const EmptyContentWithTextAnimationView(
-        text: Strings.enterYourSearchTerm,
+      return const SliverToBoxAdapter(
+        child: EmptyContentWithTextAnimationView(
+          text: Strings.enterYourSearchTerm,
+        ),
       );
     }
 
@@ -33,19 +36,25 @@ class SearchGridView extends ConsumerWidget {
     return posts.when(
       data: (posts) {
         if (posts.isEmpty) {
-          return const DataNotFoundAnimationView();
+          return const SliverToBoxAdapter(
+            child: DataNotFoundAnimationView(),
+          );
         } else {
-          return PostsGridView(
+          return PostsSliverGridView(
             posts: posts,
           );
         }
       },
       error: (err, stackTrace) {
-        return const ErrorAnimationView();
+        return const SliverToBoxAdapter(
+          child: ErrorAnimationView(),
+        );
       },
       loading: () {
-        return const Center(
-          child: CircularProgressIndicator(),
+        return const SliverToBoxAdapter(
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
         );
       },
     );
