@@ -38,7 +38,7 @@ final userPostsProvider = StreamProvider.autoDispose<Iterable<Post>>((ref) {
               json: doc.data(),
             ),
           );
-      controller.add(posts);
+      controller.sink.add(posts);
     },
   );
 
