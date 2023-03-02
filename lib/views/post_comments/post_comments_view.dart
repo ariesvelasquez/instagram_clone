@@ -24,8 +24,6 @@ class PostCommentsView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print('postId $postId');
-
     final commentController = useTextEditingController();
     final hasText = useState(false);
 
@@ -38,14 +36,6 @@ class PostCommentsView extends HookConsumerWidget {
         request.value,
       ),
     );
-
-    comments.when(data: (comments) {
-      print('comments $comments}');
-    }, error: (err, __) {
-      print('error $err');
-    }, loading: () {
-      print('loading');
-    });
 
     useEffect(() {
       commentController.addListener(() {
@@ -88,7 +78,7 @@ class PostCommentsView extends HookConsumerWidget {
                   }
                   return RefreshIndicator(
                     onRefresh: () {
-                      ref.refresh(
+                      ref.invalidate(
                         postsCommentsProvider(
                           request.value,
                         ),

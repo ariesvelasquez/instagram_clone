@@ -115,8 +115,7 @@ class ImageUploadNotifier extends StateNotifier<IsLoading> {
           .add(postPayload);
 
       return true;
-    } on FirebaseException catch (e) {
-      print("Failed with error '${e.code}': ${e.message}");
+    } on FirebaseException catch (_) {
       return false;
     } finally {
       isLoading = false;

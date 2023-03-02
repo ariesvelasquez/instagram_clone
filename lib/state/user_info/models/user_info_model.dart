@@ -1,4 +1,4 @@
-import 'dart:collection';
+import 'dart:collection' show MapView;
 
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:instagram_clone/state/constants/firebase_field_name.dart';

@@ -25,7 +25,6 @@ class MainView extends ConsumerStatefulWidget {
 class _MainViewState extends ConsumerState<MainView> {
   @override
   Widget build(BuildContext context) {
-    IconData icon;
 
     return DefaultTabController(
       length: 3,
@@ -48,7 +47,7 @@ class _MainViewState extends ConsumerState<MainView> {
                     await ImagePickerHelper.pickVideoFromGallery();
                 if (videoFile == null || !mounted) return;
 
-                ref.refresh(postSettingsProvider);
+                ref.invalidate(postSettingsProvider);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -68,7 +67,7 @@ class _MainViewState extends ConsumerState<MainView> {
                 await ImagePickerHelper.pickImageFromGallery();
                 if (imageFile == null || !mounted) return;
 
-                ref.refresh(postSettingsProvider);
+                ref.invalidate(postSettingsProvider);
                 Navigator.push(
                   context,
                   MaterialPageRoute(

@@ -37,9 +37,6 @@ class LoadingScreen {
     String text = Strings.loading,
   }) {
     final state = Overlay.of(context);
-    if (state == null) {
-      return null;
-    }
 
     final textController = StreamController<String>();
     textController.add(text);

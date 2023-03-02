@@ -1,8 +1,7 @@
-import 'dart:collection';
+import 'dart:collection' show MapView;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart' show immutable;
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:instagram_clone/state/image_upload/models/file_type.dart';
 import 'package:instagram_clone/state/posts/models/post_key.dart';
 
